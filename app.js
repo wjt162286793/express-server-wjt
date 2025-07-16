@@ -8,12 +8,15 @@ var app = express();
 //路由引入
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var portalRouter = require('./routes/portal')
+
 const testRouter = require('./routes/test')
 
 //路由挂载
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/test',testRouter)
+app.use('/portal',portalRouter)
 
 
 
