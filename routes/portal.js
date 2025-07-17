@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-
+router.use(express.json()); // 解析 application/json
+router.use(express.urlencoded({ extended: true }));
 
 
 
