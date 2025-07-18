@@ -9,12 +9,12 @@ const roleList = [
   {
     account: 'admin',
     token: 'admin_a1b2c3d4e5f6',
-    appRuleList: ['exchange', 'admin', 'bigdata','aisystem'],
+    appRuleList: ['exchange', 'devops', 'bigdata','aisystem'],
   },
   {
     account: 'tenement',
     token: 'tenement_a1b2c3d4e5f6',
-    appRuleList: ['exchange', 'bigdata','aisystem'],
+    appRuleList: ['exchange', 'bigdata','devops'],
   }
 ]
 

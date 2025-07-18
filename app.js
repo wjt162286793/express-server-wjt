@@ -7,18 +7,18 @@ const app = express();
 
 //路由引入
 const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
 const portalRouter = require('./routes/portal')
 const aisysRouter = require('./routes/aisys')
+const devopsRouter = require('./routes/devops')
 
 const testRouter = require('./routes/test')
 
 //路由挂载
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
 app.use('/test',testRouter)
 app.use('/portal',portalRouter)
 app.use('/aisys',aisysRouter)
+app.use('/devops',devopsRouter)
 
 
 // view engine setup
