@@ -6,8 +6,8 @@ router.use(express.json()); // 解析 application/json
 router.use(express.urlencoded({ extended: true }));
 
 const openai = new OpenAI({
-  baseURL: 'https://api.deepseek.com',
-  apiKey: 'sk-59bcbdeb9be440ddb820d42c8aa063ef' // 请确保使用你的有效API Key
+  baseURL: ' https://api.deepseek.com/v1',
+  apiKey: 'sk-5256bfa35c65437a9fc1f58fa5586411' // 请确保使用你的有效API Key
 });
 
 // 流式处理函数
@@ -29,7 +29,7 @@ async function streamCompletion(res, messages) {
     });
 
     // 发送初始消息确认连接
-    res.write('event: connected\ndata: {"status": "Stream started"}\n\n');
+    res.write('event: connected\ndata: {"status": "Stream-Started"}\n\n');
 
     for await (const chunk of stream) {
       const content = chunk.choices[0]?.delta?.content || '';
@@ -41,7 +41,7 @@ async function streamCompletion(res, messages) {
     }
 
     // 发送结束标记
-    res.write('event: end\ndata: {"status": "Stream completed"}\n\n');
+    res.write('event: end\ndata: {"status": "Stream-Completed"}\n\n');
   } catch (error) {
     console.error('Stream error:', error);
     if (!res.headersSent) {
@@ -63,6 +63,7 @@ router.options('/', (req, res) => {
 router.post('/', (req, res) => {
   // 设置CORS头
   res.setHeader('Access-Control-Allow-Origin', '*');
+  console.log(req.body,'???请求内容')
   const message = req.body.message
   console.log('进到这里了没',message)
   streamCompletion(res, message);
